@@ -1,3 +1,7 @@
+import colorama
+from colorama import Fore, Back 
+colorama.init(autoreset=True)
+
 def check_num(x):
     y=0
     while x:
@@ -20,10 +24,13 @@ def sum_digit(x):
         x//=10
     return y
 def mult_print(N:int,val:[])->list:
-    arr=[]
-    arr=product(val)
-    return arr
-    
+    x=1
+    result=[1]
+    for i in range(2,N+1):
+        x*=i
+        result.append(x)
+    return result
+
 
 #Напишите программу, которая принимает на вход вещественное число и показывает сумму его цифр.
 #Учтите, что числа могут быть отрицательными
@@ -54,7 +61,7 @@ while N:
             print(mult_print(N,val))
         
     except ValueError:
-        print('не верные данные')
+        print(Fore.RED+ Back.YELLOW+ '\tAchtung!!!\n\tKritischer Fehler!!!\n\tGeben Sie die Nummer erneut ein (bitte)')
 
 
 #Палиндромом называется слово, которое в обе стороны читается одинаково: "шалаш", "кабак".
