@@ -1,3 +1,5 @@
+from math import modf
+import time 
 import colorama
 from colorama import Fore, Back 
 colorama.init(autoreset=True)
@@ -31,6 +33,12 @@ def mult_print(N:int,val:[])->list:
         result.append(x)
     return result
 
+def rand_dig(n:int)->int: 
+    random_dig = float(time.time())
+    random_dig-=int(random_dig)
+    random_dig*=n
+    random_dig=int(random_dig)
+    return random_dig
 
 #Напишите программу, которая принимает на вход вещественное число и показывает сумму его цифр.
 #Учтите, что числа могут быть отрицательными
@@ -61,7 +69,7 @@ while N:
             print(mult_print(N,val))
         
     except ValueError:
-        print(Fore.RED+ Back.YELLOW+ '\tAchtung!!!\n\tKritischer Fehler!!!\n\tGeben Sie die Nummer erneut ein (bitte)')
+        print(Fore.RED+ Back.YELLOW+ '\b\b\b\tAchtung!!!\n\tKritischer Fehler!!!\n\tGeben Sie die Nummer erneut ein (bitte)')
 
 
 #Палиндромом называется слово, которое в обе стороны читается одинаково: "шалаш", "кабак".
@@ -84,3 +92,18 @@ try:
         
 except ValueError:
     print('ошибка ввода')
+#    4 - Реализуйте выдачу случайного числа
+#не использовать random.randint и вообще библиотеку random
+#Можете использовать xor, биты, библиотеку time или datetime (миллисекунды или наносекунды) - для задания случайности
+#Учтите, что есть диапазон: от(минимальное) и до (максимальное)
+
+from time import time
+
+def time_random():
+ return time() - float(str(time()).split('.')[0])
+
+def gen_random_range(min, max):
+ return int(time_random() * (max - min) + min)
+
+
+print(gen_random_range(20,60))
